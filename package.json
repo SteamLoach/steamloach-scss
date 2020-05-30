@@ -1,6 +1,6 @@
 {
   "name": "steamloach-scss",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SCSS Library for scaffolding small projects.  ",
   "main": "index.js",
   "scripts": {
