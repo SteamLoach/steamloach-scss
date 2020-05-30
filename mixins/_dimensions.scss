@@ -1,0 +1,103 @@
+////Width
+
+//Columns
+@mixin column($column) {width: 100%/$grid-columns * $column;}
+
+@mixin column-break($breakpoint, $column) {
+  @media screen and (min-width: $breakpoint) {
+    width: 100% / $grid-columns * $column;
+  }
+}
+
+@mixin column-scale(
+  $default: false,
+  $on-lrg-mobile: false,
+  $on-phablet: false,
+  $on-tablet: false,
+  $on-laptop: false,
+  $on-desktop: false
+  ) {    
+  
+  @if $default {@include column($default)}
+  @if $on-lrg-mobile  {@include column-break($lrg-mobile, $on-lrg-mobile)}
+  @if $on-phablet {@include column-break($phablet, $on-phablet)}
+  @if $on-tablet {@include column-break($tablet, $on-tablet)}
+  @if $on-laptop {@include column-break($laptop, $on-laptop)}
+  @if $on-desktop{@include column-break($desktop, $on-desktop)}
+}
+
+//Custom
+@mixin custom-break($breakpoint, $width) {
+  @media screen and (min-width: $breakpoint) {
+    width: $width;
+  }
+}
+
+@mixin custom-scale(
+  $default: false,
+  $on-lrg-mobile: false,
+  $on-phablet: false,
+  $on-tablet: false,
+  $on-laptop: false,
+  $on-desktop: false
+  ) {    
+  
+  @if $default {width: $default}
+  @if $on-lrg-mobile  {@include custom-break($lrg-mobile, $on-lrg-mobile)}
+  @if $on-phablet {@include custom-break($phablet, $on-phablet)}
+  @if $on-tablet {@include custom-break($tablet, $on-tablet)}
+  @if $on-laptop {@include custom-break($laptop, $on-laptop)}
+  @if $on-desktop{@include custom-break($desktop, $on-desktop)}
+}
+
+
+////Height
+
+@mixin height-break($breakpoint, $height) {
+  @media screen and (min-width: $breakpoint) {
+    height: $height;
+  }
+}
+
+@mixin height-scale(
+  $default: false,
+  $on-lrg-mobile: false,
+  $on-phablet: false,
+  $on-tablet: false,
+  $on-laptop: false,
+  $on-desktop: false
+  ) {
+  @if $default {height: $default}
+  @if $on-lrg-mobile  {@include height-break($lrg-mobile, $on-lrg-mobile)}
+  @if $on-phablet {@include height-break($phablet, $on-phablet)}
+  @if $on-tablet {@include height-break($tablet, $on-tablet)}
+  @if $on-laptop {@include height-break($laptop, $on-laptop)}
+  @if $on-desktop{@include height-break($desktop, $on-desktop)}
+}
+
+
+////XY Sizing
+
+@mixin size ($x, $y: false){
+  @if $y {width: $x; height: $y}
+  @else {width: $x; height: $x}
+}
+
+@mixin size-until($breakpoint, $set-x, $set-y: false) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include size($set-x, $set-y) ;
+  }
+}
+
+@mixin size-from($breakpoint, $set-x, $set-y: false) {
+  @media screen and (min-width: $breakpoint) {
+    @include size($set-x, $set-y);
+  }
+}
+
+@mixin size-between($breakpoint, $set-x, $set-y: false) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include size($set-x, $set-y); 
+  }
+}
+

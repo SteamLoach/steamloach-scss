@@ -1,0 +1,20 @@
+////Breakpoints
+
+$lrg-mobile: 375px !default;
+$phablet: 550px !default;
+$tablet: 768px !default;
+$laptop: 1024px !default;
+$desktop: 1264px !default;
+
+$breakpoints: (
+  $lrg-mobile,
+  $phablet, 
+  $tablet,
+  $laptop,
+  $desktop
+);
+
+
+////Columns
+
+$grid-columns: 24 !default; //alters the number of calculated 'width' columns

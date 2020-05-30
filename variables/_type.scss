@@ -1,0 +1,38 @@
+////Fonts
+$text-font: 'Arial', sans-serif !default;
+$title-font: 'Verdana', sans-serif !default;
+$tertiary-font: 'Verdana', sans-serif !default;
+//Color
+$text-color: $shade-darker !default;
+$offset-text-color: $shade-lightest !default;
+$title-color: $shade-black !default;
+$offset-title-color: $shade-lightest !default;
+
+
+
+////Type Scale
+
+//Sub
+$text-smallest: 12px !default;
+$text-smaller: 14px !default;
+$text-small: 16px !default;
+
+//Body
+$text-root: 16px !default;
+$text-body: 18px !default;
+$text-large: 20px !default;
+$text-larger: 24px !default;
+$text-largest: 30px !default;
+
+//Title
+$title-smallest: 20px !default;
+$title-smaller: 24px !default;
+$title-small: 30px !default;
+$title-medium: 36px !default;
+$title-large: 48px !default;
+$title-larger: 60px !default;
+$title-largest: 72px !default;
+
+
+////Line Heights
+$line-height-root: 1.5 !default;

@@ -1,0 +1,231 @@
+//HTML Base
+
+@mixin html-base() {
+  
+  font-family: $text-font;
+  font-size: $text-root;
+  line-height: $line-height-root;
+  color: $text-color;
+  //Page Background
+  background-color: $page-background;
+    
+  //header sizing, colouring etc
+  h1, h2, h3,
+  h4, h5, h6, {
+    font-family: $title-font;
+    color: $title-color;
+  }
+  h1, h2 {line-height: 1.0;}
+  h3, h4 {line-height: 1.2;}
+  h5, h6 {line-height: 1.3;}
+}
+
+
+//Media Query Shorthand
+
+@mixin media-until ($breakpoint, $attribute, $val) {
+  @media screen and (max-width: $breakpoint - 1px) {
+     #{$attribute}: $val;
+  }
+}
+
+@mixin media-from ($breakpoint, $attribute, $val) {
+  @media screen and (min-width: $breakpoint) {
+     #{$attribute}: $val;
+ }
+}
+
+@mixin media-between($start, $end, $attribute, $val) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    #{$attribute}: $val;
+  }
+}
+
+
+//Background Images
+
+@mixin background-image(
+  $position: center,
+  $size: cover
+  ) {
+    background-position: $position;
+    background-repeat: no-repeat;
+    background-size: $size;
+}
+
+
+//Borders
+
+//Base
+@mixin border($style: $standard-border, $radius: false) {
+  border: $style;
+  @if $radius {border-radius: $radius}
+}
+
+@mixin x-border($style) {
+  border-left: $style;
+  border-right: $style;
+}
+
+@mixin y-border($style) {
+  border-top: $style;
+  border-bottom: $style;
+}
+
+@mixin border-from(
+  $breakpoint,
+  $dir: false,
+  $style: $border,
+  $radius: false
+  ) {
+    @media screen and (min-width: $breakpoint) {
+      @if $dir == false {border: $style;}
+      @if $dir == x {@include x-border($style);}
+      @if $dir == y {@include y-border($style);}
+      @else {border-#{$dir}: $style}
+      @if $radius {border-radius: $radius}
+      
+  } 
+}
+
+@mixin border-until(
+  $breakpoint,
+  $dir: false,
+  $style: $border,
+  $radius: false
+  ) {
+    @media screen and (max-width: $breakpoint - 1px) {
+      @if $dir == false {border: $style;}
+      @if $dir == x {@include x-border($style);}
+      @if $dir == y {@include y-border($style);}
+      @else {border-#{$dir}: $style}
+      @if $radius {border-radius: $radius}
+  } 
+}
+
+@mixin border-between(
+  $start,
+  $end,
+  $dir: false,
+  $style: $border,
+  $radius: false
+  ) {
+    @media screen and (min-width: $start) and (max-width: $end - 1px) {
+      @if $dir == false {border: $style;}
+      @if $dir == x {@include x-border($style);}
+      @if $dir == y {@include y-border($style);}
+      @else {border-#{$dir}: $style}
+      @if $radius {border-radius: $radius}
+  } 
+}
+
+
+//Shadow
+
+//Shadows
+@mixin shadow($style, $shade: $shadow-shade) {
+  -webkit-box-shadow: $style $shade;
+  box-shadow: $style $shade;
+}
+
+@mixin shadow-from (
+  $breakpoint,
+  $style,
+  $shade: $shadow-shade) {
+  @media screen and (min-width: $breakpoint) {
+    @include shadow($style, $shade) ; 
+  }
+}
+
+@mixin shadow-until (
+  $breakpoint,
+  $style,
+  $shade: $shadow-shade) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include shadow($style, $shade) ; 
+  }
+}
+
+@mixin shadow-between (
+  $start,
+  $end,
+  $style,
+  $shade: $shadow-shade) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include shadow($style, $shade) ; 
+  }
+}
+
+
+//Transitions
+@mixin transition(
+  $props: all,
+  $duration: $transition-duration,
+  $function: ease-in-out
+  ) {
+  transition-property: $props;
+  transition-duration: $duration;
+  transition-timing-function: $function;
+}
+
+
+//Hover
+
+@mixin hover-pointer() {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//Quick Color Fill
+
+@mixin quick-fill(
+  $background: $page-background,
+  $text: $text-color,
+  $title: $title-color,
+  $border: true,
+) {
+  
+  color: $text;
+  
+  h1, h2, h3,
+  h4, h5, h6 {
+    color: $title;
+  }
+  
+  @if $border {
+    border: $border-width solid $text;
+  }
+  
+  background: $background;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

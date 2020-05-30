@@ -1,0 +1,211 @@
+////Margin
+
+//Base
+
+@mixin x-margin($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin y-margin($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin xy-margin($margin) {
+  margin: $margin;
+}
+
+
+//Responsive
+
+@mixin single-margin-until($breakpoint, $dir, $val) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    margin-#{$dir}: $val;
+  }
+}
+
+@mixin single-margin-from($breakpoint, $dir, $val) {
+  @media screen and (min-width: $breakpoint) {
+    margin-#{$dir}: $val;
+  }
+}
+
+@mixin single-margin-between($start, $end, $margin) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    margin: $margin;
+  }
+}
+
+@mixin x-margin-until($breakpoint, $margin) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include x-margin($margin) ; 
+  }
+}
+
+@mixin x-margin-from($breakpoint, $margin) {
+  @media screen and (min-width: $breakpoint) {
+    @include x-margin($margin) ; 
+  }
+}
+
+@mixin x-margin-between($start, $end, $margin) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include x-margin($margin) ; 
+  }
+}
+
+@mixin y-margin-until($breakpoint, $margin) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include y-margin($margin) ; 
+  }
+}
+
+@mixin y-margin-from($breakpoint, $margin) {
+  @media screen and (min-width: $breakpoint) {
+    @include y-margin($margin) ; 
+  }
+}
+
+@mixin y-margin-between($start, $end, $margin) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include y-margin($margin) ; 
+  }
+}
+
+@mixin xy-margin-from($breakpoint, $margin) {
+  @media screen and (min-width: $breakpoint) {
+    @include x-margin($margin) ; 
+    @include y-margin($margin) ; 
+  }
+}
+
+@mixin xy-margin-until($breakpoint, $margin) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include x-margin($margin) ; 
+    @include y-margin($margin) ; 
+  }
+}
+
+@mixin xy-margin-between($start, $end, $margin) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include x-margin($margin) ;
+    @include y-margin($margin) ;
+  }
+}
+
+@mixin margin(
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  )  {
+
+  @if $xy {margin: $xy;}
+  @if $x {@include x-margin($x)} 
+  @if $y {@include y-margin($y)}
+  @if $top {margin-top: $top}
+  @if $right {margin-right: $right}
+  @if $bottom {margin-bottom: $bottom}
+  @if $left {margin-left: $left}
+
+}
+
+@mixin margin-until(
+  $breakpoint,
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  ) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include margin($xy,$x,$y,$top,$right,$bottom,$left);
+  }
+}
+
+@mixin margin-from(
+  $breakpoint,
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  ) {
+  @media screen and (min-width: $breakpoint) {
+    @include margin($xy,$x,$y,$top,$right,$bottom,$left);
+  }
+}
+
+@mixin margin-between(
+  $start,
+  $end,
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  ) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include margin($xy,$x,$y,$top,$right,$bottom,$left); 
+  }
+}
+
+//Scale
+
+@mixin margin-scale (
+  $dir,
+    $default: false,
+    $on-lrg-mobile: false,
+    $on-phablet: false, 
+    $on-tablet: false,
+    $on-laptop: false,
+    $on-desktop: false,
+  ) {
+    
+  $scale: (
+    1: $on-lrg-mobile,
+    2: $on-phablet,
+    3: $on-tablet,
+    4: $on-laptop,
+    5: $on-desktop
+  );
+    
+  @if $default {
+    @if $dir == x {@include x-margin($default);}
+    @else if $dir == y {@include y-margin($default);}
+    @else if $dir == xy {@include xy-margin($default);}
+    @else {margin-#{$dir}: $default;}
+  }
+        
+  @each $key, $val in $scale {
+    
+    @if $val {
+      
+      @if $dir == x {
+        @include x-margin-from(nth($breakpoints, $key), $val);
+      }
+      
+      @else if $dir == y {
+        @include y-margin-from(nth($breakpoints, $key), $val);          
+      }
+      
+      @else if $dir == xy {
+        @include xy-margin-from(nth($breakpoints, $key), $val);          
+      }
+      
+      @else {
+        @include single-margin-from(nth($breakpoints, $key), $dir, $val);
+      }
+    }
+  } 
+}

@@ -1,0 +1,244 @@
+//Base//
+
+@mixin justify($val) {
+  
+    @if $val == center {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    @else if $val == around {
+      -ms-flex-pack: distribute;justify-content: space-around;
+    }
+    @else if $val == between {
+      -webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;
+    }
+    @else if $val == start {
+      -webkit-box-pack: start;-ms-flex-pack: start;justify-content: flex-start;
+    }
+    @else if $val == end {
+      -webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end;
+    }
+}
+
+@mixin align($val) {
+    
+    @if $val == center {
+      -webkit-box-align: center;-ms-flex-align: center;align-items: center;
+    }
+    @else if $val == baseline {
+      -webkit-box-align: baseline;-ms-flex-align: baseline;align-items: baseline;
+    }
+    @else if $val == stretch {
+      -webkit-box-align: stretch;-ms-flex-align: stretch;align-items: stretch;
+    }
+    @else if $val == start {
+      -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start;
+    }
+    @else if $val == end {
+      -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end;
+    }
+}
+
+@mixin align-c($val) {
+  
+    @if $val == center {
+      -ms-flex-line-pack: center; align-content: center;
+    }
+    @else if $val == around {
+      -ms-flex-line-pack: distribute; align-content: space-around;
+    }
+    @else if $val == between {
+      -ms-flex-line-pack: justify; align-content: space-between;
+    }
+    @else if $val == stretch {
+      -ms-flex-line-pack: stretch;align-content: stretch;
+    }
+    @else if $val == start {
+      -ms-flex-line-pack: start; align-content: flex-start
+    }
+    @else if $val == end {
+      -ms-flex-line-pack: end; align-content: flex-end;
+    }
+}
+
+
+//Responsive
+
+@mixin x-until($breakpoint, $val) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include justify($val) ; 
+  }
+}
+
+@mixin x-from($breakpoint, $val) {
+  @media screen and (min-width: $breakpoint) {
+    @include justify($val) ; 
+  }
+}
+
+@mixin x-between($start, $end, $val) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include justify($val);
+  }
+}
+
+///Align Items///
+@mixin y-until($breakpoint, $val) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include align($val) ; 
+  }
+}
+
+@mixin y-from($breakpoint, $val) {
+  @media screen and (min-width: $breakpoint) {
+    @include align($val) ; 
+  }
+}
+
+@mixin y-between($start, $end, $val) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include align($val);
+  }
+}
+
+
+@mixin yc-until($breakpoint, $val) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include align-c($val) ; 
+  }
+}
+
+@mixin yc-from($breakpoint, $val) {
+  @media screen and (min-width: $breakpoint) {
+    @include align-c($val) ; 
+  }
+}
+
+@mixin yc-between($start, $end, $val) {
+  @media screen and (min-width: $start) and (max-width: $end -1px) {
+    @include align-c($val);
+  }
+}
+
+
+//Position
+
+@mixin position(
+  $position,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false
+  ) {
+    position: $position;
+      @if $top {top: $top;}
+      @if $right {right: $right;}
+      @if $bottom {bottom: $bottom;}
+      @if $left {left: $left;}
+}
+
+@mixin position-from(
+  $breakpoint,
+  $position,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false
+  ) {
+  @media screen and (min-width: $breakpoint) {
+    position: $position;
+      @if $top {top: $top;}
+      @if $right {right: $right;}
+      @if $bottom {bottom: $bottom;}
+      @if $left {left: $left;}
+  }
+}
+
+@mixin position-until(
+  $breakpoint,
+  $position,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false
+  ) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    position: $position;
+      @if $top {top: $top;}
+      @if $right {right: $right;}
+      @if $bottom {bottom: $bottom;}
+      @if $left {left: $left;}
+  }
+}
+
+@mixin position-between(
+  $start,
+  $end,
+  $position,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false
+  ) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    position: $position;
+      @if $top {top: $top;}
+      @if $right {right: $right;}
+      @if $bottom {bottom: $bottom;}
+      @if $left {left: $left;}
+  }
+}
+
+//Center Absolute
+
+@mixin center-absolute($axis: x) {
+  position: absolute;
+  @if $axis == xy {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @else if $axis == x {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @else if $axis == y {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin x-center-absolute() {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+@mixin center-absolute-until($breakpoint, $axis: x) {
+    @media screen and (max-width: $breakpoint  - 1px) {
+      @include center-absolute($axis);
+  }
+}
+
+@mixin center-absolute-from($breakpoint, $axis: x) {
+    @media screen and (min-width: $breakpoint) {
+      @include center-absolute($axis);
+  }
+}
+
+@mixin y-center-absolute() {
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@mixin y-center-absolute-until($breakpoint) {
+    @media screen and (max-width: $breakpoint  - 1px) {
+      @include y-center-absolute();
+  }
+}
+
+@mixin y-center-absolute-from($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+      @include y-center-absolute();
+  }
+}

@@ -1,0 +1,38 @@
+////Font Size
+
+//Base
+@mixin font-size-until ($breakpoint, $size) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    font-size: $size;
+  }
+}
+
+@mixin font-size-from ($breakpoint, $size) {
+  @media screen and (min-width: $breakpoint) {
+    font-size: $size;
+  }
+}
+
+@mixin font-size-between($start, $end, $size) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    font-size: $size;
+  }
+}
+
+//Scale
+@mixin font-size-scale(
+  $default: false,
+  $on-lrg-mobile: false,
+  $on-phablet: false,
+  $on-tablet: false,
+  $on-laptop: false,
+  $on-desktop: false
+  ) {
+  @if $default {font-size:$default;}
+  @if $on-lrg-mobile  {@include font-size-from($lrg-mobile, $on-lrg-mobile)}
+  @if $on-phablet {@include font-size-from($phablet, $on-phablet)}
+  @if $on-tablet {@include font-size-from($tablet, $on-tablet)}
+  @if $on-laptop {@include font-size-from($laptop, $on-laptop)}
+  @if $on-desktop{@include font-size-from($desktop, $on-desktop)}
+}
+

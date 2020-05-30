@@ -1,0 +1,209 @@
+////Padding
+
+//Base
+@mixin x-pad($pad) {
+  padding-left: $pad;
+  padding-right: $pad;
+}
+
+@mixin y-pad($pad) {
+  padding-top: $pad;
+  padding-bottom: $pad;
+}
+
+@mixin xy-pad($pad) {
+  padding: $pad;
+}
+
+//Responsive
+
+@mixin single-pad-until($breakpoint, $dir, $val) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    padding-#{$dir}: $val 
+  }
+}
+
+@mixin single-pad-from($breakpoint, $dir, $val) {
+  @media screen and (min-width: $breakpoint) {
+    padding-#{$dir}: $val
+  }
+}
+
+@mixin single-pad-between($start, $end, $dir, $val) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    padding-#{$dir}: $val;
+  }
+}
+
+@mixin x-pad-until($breakpoint, $pad) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include x-pad($pad) ; 
+  }
+}
+
+@mixin x-pad-from($breakpoint, $pad) {
+  @media screen and (min-width: $breakpoint) {
+    @include x-pad($pad) ; 
+  }
+}
+
+@mixin x-pad-between($start, $end, $pad) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include x-pad($pad) ; 
+  }
+}
+
+@mixin y-pad-until($breakpoint, $pad) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include y-pad($pad) ; 
+  }
+}
+
+@mixin y-pad-from($breakpoint, $pad) {
+  @media screen and (min-width: $breakpoint) {
+    @include y-pad($pad) ; 
+  }
+}
+
+@mixin y-pad-between($start, $end, $pad) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include y-pad($pad) ; 
+  }
+}
+
+@mixin xy-pad-until($breakpoint, $pad) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include x-pad($pad) ; 
+    @include y-pad($pad) ; 
+  }
+}
+
+@mixin xy-pad-from($breakpoint, $pad) {
+  @media screen and (min-width: $breakpoint) {
+    @include x-pad($pad) ; 
+    @include y-pad($pad) ; 
+  }
+}
+
+@mixin xy-pad-between($start, $end, $pad) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include x-pad($pad) ;
+    @include y-pad($pad) ;
+  }
+}
+
+@mixin pad(
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  )  {
+
+  @if $xy {padding: $xy;}
+  @if $x {@include x-pad($x)} 
+  @if $y {@include y-pad($y)}
+  @if $top {padding-top: $top}
+  @if $right {padding-right: $right}
+  @if $bottom {padding-bottom: $bottom}
+  @if $left {padding-left: $left}
+
+}
+
+@mixin pad-until(
+  $breakpoint,
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  ) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @include pad($xy,$x,$y,$top,$right,$bottom,$left);
+  }
+}
+
+@mixin pad-from(
+  $breakpoint,
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  ) {
+  @media screen and (min-width: $breakpoint) {
+    @include pad($xy,$x,$y,$top,$right,$bottom,$left);
+  }
+}
+
+@mixin pad-between(
+  $start,
+  $end,
+  $xy: false,
+  $x: false, 
+  $y: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false,
+  ) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    @include pad($xy,$x,$y,$top,$right,$bottom,$left); 
+  }
+}
+
+
+//Scale
+@mixin pad-scale (
+  $dir,
+    $default: false,
+    $on-lrg-mobile: false,
+    $on-phablet: false, 
+    $on-tablet: false,
+    $on-laptop: false,
+    $on-desktop: false,
+  ) {
+    
+  $scale: (
+    1: $on-lrg-mobile,
+    2: $on-phablet,
+    3: $on-tablet,
+    4: $on-laptop,
+    5: $on-desktop
+  );
+    
+  @if $default {
+    @if $dir == x {@include x-pad($default);}
+    @else if $dir == y {@include y-pad($default);}
+    @else if $dir == xy {@include x-pad($default); @include y-pad($default);}
+    @else {padding-#{$dir}: $default;}
+  }
+        
+  @each $key, $val in $scale {
+    
+    @if $val {
+      
+      @if $dir == x {
+        @include x-pad-from(nth($breakpoints, $key), $val);
+      }
+      
+      @else if $dir == y {
+        @include y-pad-from(nth($breakpoints, $key), $val);          
+      }
+      
+      @else if $dir == xy {
+        @include xy-pad-from(nth($breakpoints, $key), $val);          
+      }
+      
+      @else {
+        @include single-pad-from(nth($breakpoints, $key), $dir, $val);
+      }
+    }
+  } 
+}
