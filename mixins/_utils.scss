@@ -161,7 +161,7 @@
 @mixin transition(
   $props: all,
   $duration: $transition-duration,
-  $function: ease-in-out
+  $function: $transition-function,
   ) {
   transition-property: $props;
   transition-duration: $duration;

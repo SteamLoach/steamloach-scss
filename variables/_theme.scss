@@ -25,8 +25,9 @@ $elevation-heavier: 0px 15px 35px !default;
 
 //Border
 $border: 2px solid #000 !default;
-$border-width: 1px !default;
+$border-width: 2px !default;
 $border-radius: 10px !default;
 
 //Transitions
+$transition-function: ease-in-out !default;
 $transition-duration: 0.3s !default;

@@ -78,26 +78,77 @@
 
 ////XY Sizing
 
-@mixin size ($x, $y: false){
-  @if $y {width: $x; height: $y}
-  @else {width: $x; height: $x}
+@mixin size ($x, $y: false, $min: false $max: false) {
+  @if $y {
+    width: $x; height: $y;
+    @if $min {
+      min-width: $x; min-height: $y;
+    }
+    @if $max {
+      max-width: $x; max-height: $y;
+    }
+    
+  }
+  @else {
+    width: $x; height: $x;
+    @if $min {
+      min-width: $x; min-height: $x;
+    }
+    @if $max {
+      max-width: $x; max-height: $x;
+    }
+  }
 }
 
-@mixin size-until($breakpoint, $set-x, $set-y: false) {
+@mixin size-until(
+  $breakpoint,
+  $set-x,
+  $set-y: false,
+  $set-min: false,
+  $set-max: false
+  ) {
   @media screen and (max-width: $breakpoint - 1px) {
-    @include size($set-x, $set-y) ;
+    @include size(
+      $set-x,
+      $set-y,
+      $set-min,
+      $set-max
+    ) ;
   }
 }
 
-@mixin size-from($breakpoint, $set-x, $set-y: false) {
-  @media screen and (min-width: $breakpoint) {
-    @include size($set-x, $set-y);
+@mixin size-from(
+  $breakpoint,
+  $set-x,
+  $set-y: false,
+  $set-min: false,
+  $set-max: false
+  ) {
+  @media screen and (min-width: $breakpoint - 1px) {
+    @include size(
+      $set-x,
+      $set-y,
+      $set-min,
+      $set-max
+    ) ;
   }
 }
 
-@mixin size-between($breakpoint, $set-x, $set-y: false) {
-  @media screen and (min-width: $start) and (max-width: $end - 1px) {
-    @include size($set-x, $set-y); 
+@mixin size-between(
+  $start,
+  $end,
+  $set-x,
+  $set-y: false,
+  $set-min: false,
+  $set-max: false
+  ) {
+  @media screen and (min-width: $start, max-width: $end - 1px) {
+    @include size(
+      $set-x,
+      $set-y,
+      $set-min,
+      $set-max
+    ) ;
   }
 }
 
