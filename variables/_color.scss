@@ -2,63 +2,63 @@
 $brand-hue: 210 !default;
 $brand-saturation: 77% !default;
 
-$brand-darkest: hsl($brand-hue, $brand-saturation, 14%) !default; 
-$brand-darker: hsl($brand-hue, $brand-saturation, 28%) !default; 
-$brand-dark: hsl($brand-hue, $brand-saturation, 42%) !default; 
+$brand-darkest: hsl($brand-hue, $brand-saturation, 14%) !default;
+$brand-darker: hsl($brand-hue, $brand-saturation, 28%) !default;
+$brand-dark: hsl($brand-hue, $brand-saturation, 42%) !default;
 $brand-base: hsl($brand-hue, $brand-saturation, 56%) !default;
 $brand-light: hsl($brand-hue, $brand-saturation, 70%) !default;
 $brand-lighter: hsl($brand-hue, $brand-saturation, 84%) !default;
 $brand-lightest: hsl($brand-hue, $brand-saturation, 92%) !default;
 
 
-//Accent 
+//Accent
 $accent-hue: 318 !default;
 $accent-saturation: 94% !default;
 
-$accent-darkest: hsl($accent-hue, $accent-saturation, 14%) !default; 
-$accent-darker: hsl($accent-hue, $accent-saturation, 28%) !default; 
-$accent-dark: hsl($accent-hue, $accent-saturation, 42%) !default; 
+$accent-darkest: hsl($accent-hue, $accent-saturation, 14%) !default;
+$accent-darker: hsl($accent-hue, $accent-saturation, 28%) !default;
+$accent-dark: hsl($accent-hue, $accent-saturation, 42%) !default;
 $accent-base: hsl($accent-hue, $accent-saturation, 56%) !default;
 $accent-light: hsl($accent-hue, $accent-saturation, 70%) !default;
 $accent-lighter: hsl($accent-hue, $accent-saturation, 84%) !default;
-$accent-lightest: hsl($accent-hue, $accent-saturation, 92%) !default; 
+$accent-lightest: hsl($accent-hue, $accent-saturation, 92%) !default;
 
 
-//Tertiary
-$tertiary-hue: 19 !default;
-$tertiary-saturation: 95% !default;
+//Secondary
+$secondary-hue: 19 !default;
+$secondary-saturation: 95% !default;
 
-$tertiary-darkest: hsl($tertiary-hue, $tertiary-saturation, 14%) !default; 
-$tertiary-darker: hsl($tertiary-hue, $tertiary-saturation, 28%) !default; 
-$tertiary-dark: hsl($tertiary-hue, $tertiary-saturation, 42%) !default; 
-$tertiary-base: hsl($tertiary-hue, $tertiary-saturation, 56%) !default;
-$tertiary-light: hsl($tertiary-hue, $tertiary-saturation, 70%) !default;
-$tertiary-lighter: hsl($tertiary-hue, $tertiary-saturation, 84%) !default;
-$tertiary-lightest: hsl($tertiary-hue, $tertiary-saturation, 92%) !default;
+$secondary-darkest: hsl($secondary-hue, $secondary-saturation, 14%) !default;
+$secondary-darker: hsl($secondary-hue, $secondary-saturation, 28%) !default;
+$secondary-dark: hsl($secondary-hue, $secondary-saturation, 42%) !default;
+$secondary-base: hsl($secondary-hue, $secondary-saturation, 56%) !default;
+$secondary-light: hsl($secondary-hue, $secondary-saturation, 70%) !default;
+$secondary-lighter: hsl($secondary-hue, $secondary-saturation, 84%) !default;
+$secondary-lightest: hsl($secondary-hue, $secondary-saturation, 92%) !default;
 
 //Shades
 $shade-hue: $brand-hue !default;
 $shade-saturation: 10% !default;
 
-$shade-black: hsl(0,0,0%) !default;
-$shade-darkest: hsl($shade-hue, $shade-saturation, 18%) !default; 
-$shade-darker: hsl($shade-hue, $shade-saturation, 32%) !default; 
-$shade-dark: hsl($shade-hue, $shade-saturation, 48%) !default; 
+$shade-black: hsl(0, 0%, 2%) !default;
+$shade-darkest: hsl($shade-hue, $shade-saturation, 18%) !default;
+$shade-darker: hsl($shade-hue, $shade-saturation, 32%) !default;
+$shade-dark: hsl($shade-hue, $shade-saturation, 48%) !default;
 $shade-base: hsl($shade-hue, $shade-saturation, 64%) !default;
 $shade-light: hsl($shade-hue, $shade-saturation, 76%) !default;
 $shade-lighter: hsl($shade-hue, $shade-saturation, 84%) !default;
 $shade-lightest: hsl($shade-hue, $shade-saturation, 92%) !default;
-$shade-white: hsl($shade-hue, $shade-saturation, 100%) !default; 
+$shade-white: hsl($shade-hue, $shade-saturation, 98%) !default;
 
 
 //Success
 $success-hue: 120 !default;
 $success-saturation: 85% !default;
 
-$success-black: hsl(0,0,0%) !default;
-$success-darkest: hsl($success-hue, $success-saturation, 18%) !default; 
-$success-darker: hsl($success-hue, $success-saturation, 32%) !default; 
-$success-dark: hsl($success-hue, $success-saturation, 48%) !default; 
+$success-black: hsl(0, 0%, 0%) !default;
+$success-darkest: hsl($success-hue, $success-saturation, 18%) !default;
+$success-darker: hsl($success-hue, $success-saturation, 32%) !default;
+$success-dark: hsl($success-hue, $success-saturation, 48%) !default;
 $success-base: hsl($success-hue, $success-saturation, 64%) !default;
 $success-light: hsl($success-hue, $success-saturation, 76%) !default;
 $success-lighter: hsl($success-hue, $success-saturation, 84%) !default;
@@ -69,10 +69,10 @@ $success-white: hsl($success-hue, $success-saturation, 100%) !default;
 $warning-hue: 48 !default;
 $warning-saturation: 85% !default;
 
-$warning-black: hsl(0,0,0%) !default;
-$warning-darkest: hsl($warning-hue, $warning-saturation, 18%) !default; 
-$warning-darker: hsl($warning-hue, $warning-saturation, 32%) !default; 
-$warning-dark: hsl($warning-hue, $warning-saturation, 48%) !default; 
+$warning-black: hsl(0, 0%, 0%) !default;
+$warning-darkest: hsl($warning-hue, $warning-saturation, 18%) !default;
+$warning-darker: hsl($warning-hue, $warning-saturation, 32%) !default;
+$warning-dark: hsl($warning-hue, $warning-saturation, 48%) !default;
 $warning-base: hsl($warning-hue, $warning-saturation, 64%) !default;
 $warning-light: hsl($warning-hue, $warning-saturation, 76%) !default;
 $warning-lighter: hsl($warning-hue, $warning-saturation, 84%) !default;
@@ -83,10 +83,10 @@ $warning-white: hsl($warning-hue, $warning-saturation, 100%) !default;
 $danger-hue: 348 !default;
 $danger-saturation: 85% !default;
 
-$danger-black: hsl(0,0,0%) !default;
-$danger-darkest: hsl($danger-hue, $danger-saturation, 18%) !default; 
-$danger-darker: hsl($danger-hue, $danger-saturation, 32%) !default; 
-$danger-dark: hsl($danger-hue, $danger-saturation, 48%) !default; 
+$danger-black: hsl(0, 0%, 0%) !default;
+$danger-darkest: hsl($danger-hue, $danger-saturation, 18%) !default;
+$danger-darker: hsl($danger-hue, $danger-saturation, 32%) !default;
+$danger-dark: hsl($danger-hue, $danger-saturation, 48%) !default;
 $danger-base: hsl($danger-hue, $danger-saturation, 64%) !default;
 $danger-light: hsl($danger-hue, $danger-saturation, 76%) !default;
 $danger-lighter: hsl($danger-hue, $danger-saturation, 84%) !default;

@@ -117,7 +117,7 @@ The `$page-background` variable is used in the `html-base` mixin to set a backgr
 
 SteamLoach includes two kinds of default shadow variable, `$shadow` and `$elevation`. `$shadow` variables are generally more direction-oriented, while `$elevation` is used to 'lift' elements in your design.
 
-**`$Shadow`**
+**Shadow**
 ```scss
 $under-shadow: 0px 6px 20px -6px; 
 $centered-shadow: 0px 0px 4px 3px;
@@ -126,7 +126,7 @@ $down-shadow: 0px 4px 4px 0px;
 $inset-shadow: inset 0px 0px 2px; 
 ```
 
-**`$Elevation`**
+**Elevation**
 ```scss
 $elevation-lighter: 0px 1px 3px; 
 $elevation-light: 0px 4px 6px; 

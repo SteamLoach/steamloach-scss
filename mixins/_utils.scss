@@ -1,17 +1,17 @@
 //HTML Base
 
 @mixin html-base() {
-  
+
   font-family: $text-font;
   font-size: $text-root;
   line-height: $line-height-root;
   color: $text-color;
   //Page Background
   background-color: $page-background;
-    
+
   //header sizing, colouring etc
   h1, h2, h3,
-  h4, h5, h6, {
+  h4, h5, h6 {
     font-family: $title-font;
     color: $title-color;
   }
@@ -41,6 +41,25 @@
   }
 }
 
+//Hide
+@mixin hidden-until ($breakpoint) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    display: none;
+ }
+}
+
+@mixin hidden-from ($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    display: none;
+  }
+}
+
+@mixin hidden-between ($start, $end) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    display: none;
+  }
+}
+
 
 //Background Images
 
@@ -57,7 +76,7 @@
 //Borders
 
 //Base
-@mixin border($style: $standard-border, $radius: false) {
+@mixin border($style: $border, $radius: false) {
   border: $style;
   @if $radius {border-radius: $radius}
 }
@@ -84,8 +103,8 @@
       @if $dir == y {@include y-border($style);}
       @else {border-#{$dir}: $style}
       @if $radius {border-radius: $radius}
-      
-  } 
+
+  }
 }
 
 @mixin border-until(
@@ -100,7 +119,7 @@
       @if $dir == y {@include y-border($style);}
       @else {border-#{$dir}: $style}
       @if $radius {border-radius: $radius}
-  } 
+  }
 }
 
 @mixin border-between(
@@ -116,11 +135,9 @@
       @if $dir == y {@include y-border($style);}
       @else {border-#{$dir}: $style}
       @if $radius {border-radius: $radius}
-  } 
+  }
 }
 
-
-//Shadow
 
 //Shadows
 @mixin shadow($style, $shade: $shadow-shade) {
@@ -133,7 +150,7 @@
   $style,
   $shade: $shadow-shade) {
   @media screen and (min-width: $breakpoint) {
-    @include shadow($style, $shade) ; 
+    @include shadow($style, $shade) ;
   }
 }
 
@@ -142,7 +159,7 @@
   $style,
   $shade: $shadow-shade) {
   @media screen and (max-width: $breakpoint - 1px) {
-    @include shadow($style, $shade) ; 
+    @include shadow($style, $shade) ;
   }
 }
 
@@ -152,7 +169,7 @@
   $style,
   $shade: $shadow-shade) {
   @media screen and (min-width: $start) and (max-width: $end - 1px) {
-    @include shadow($style, $shade) ; 
+    @include shadow($style, $shade) ;
   }
 }
 
@@ -185,20 +202,20 @@
   $title: $title-color,
   $border: true,
 ) {
-  
+
   color: $text;
-  
+
   h1, h2, h3,
   h4, h5, h6 {
     color: $title;
   }
-  
+
   @if $border {
     border: $border-width solid $text;
   }
-  
+
   background: $background;
-  
+
 }
 
 

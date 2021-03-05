@@ -3,8 +3,27 @@
 //Columns
 @mixin column($column) {width: 100%/$grid-columns * $column;}
 
+
 @mixin column-break($breakpoint, $column) {
   @media screen and (min-width: $breakpoint) {
+    width: 100% / $grid-columns * $column;
+  }
+}
+//alias
+@mixin column-from($breakpoint, $column) {
+  @media screen and (min-width: $breakpoint) {
+    width: 100% / $grid-columns * $column;
+  }
+}
+
+@mixin column-until($breakpoint, $column) {
+  @media screen and (max-width: ($breakpoint -1)) {
+    width: 100% / $grid-columns * $column;
+  }
+}
+
+@mixin column-between($start, $end, $column) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
     width: 100% / $grid-columns * $column;
   }
 }
@@ -16,8 +35,8 @@
   $on-tablet: false,
   $on-laptop: false,
   $on-desktop: false
-  ) {    
-  
+  ) {
+
   @if $default {@include column($default)}
   @if $on-lrg-mobile  {@include column-break($lrg-mobile, $on-lrg-mobile)}
   @if $on-phablet {@include column-break($phablet, $on-phablet)}
@@ -32,6 +51,33 @@
     width: $width;
   }
 }
+//alias
+@mixin width-from($breakpoint, $width, $max: false) {
+  @media screen and (min-width: $breakpoint) {
+    width: $width;
+    @if $max {
+      max-width: $width;
+    }
+  }
+}
+
+@mixin width-until($breakpoint, $width, $max: false) {
+  @media screen and (max-width: ($breakpoint -1)) {
+    width: $width;
+    @if $max {
+      max-width: $width;
+    }
+  }
+}
+
+@mixin width-between($start, $end, $width, $max: false) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    width: $width;
+    @if $max {
+      max-width: $width;
+    }
+  }
+}
 
 @mixin custom-scale(
   $default: false,
@@ -40,14 +86,59 @@
   $on-tablet: false,
   $on-laptop: false,
   $on-desktop: false
-  ) {    
-  
+  ) {
+
   @if $default {width: $default}
   @if $on-lrg-mobile  {@include custom-break($lrg-mobile, $on-lrg-mobile)}
   @if $on-phablet {@include custom-break($phablet, $on-phablet)}
   @if $on-tablet {@include custom-break($tablet, $on-tablet)}
   @if $on-laptop {@include custom-break($laptop, $on-laptop)}
   @if $on-desktop{@include custom-break($desktop, $on-desktop)}
+}
+@mixin width-scale(
+  $default: false,
+  $on-lrg-mobile: false,
+  $on-phablet: false,
+  $on-tablet: false,
+  $on-laptop: false,
+  $on-desktop: false,
+  $max: false,
+) {
+  @if $default {
+    width: $default;
+    @if $max {max-width: $default;}
+  }
+  @if $on-lrg-mobile  {
+    @include width-from($lrg-mobile, $on-lrg-mobile, $max: $max)
+  }
+  @if $on-phablet {
+    @include width-from($phablet, $on-phablet, $max: $max)
+  }
+  @if $on-tablet {
+    @include width-from($tablet, $on-tablet, $max: $max)
+  }
+  @if $on-laptop {
+    @include width-from($laptop, $on-laptop, $max: $max)
+  }
+  @if $on-desktop{
+    @include width-from($desktop, $on-desktop, $max: $max)
+  }
+}
+
+@mixin max-width-from($breakpoint, $width) {
+  @media screen and (min-width: $breakpoint) {
+    max-width: $width;
+  }
+}
+@mixin max-width-until($breakpoint, $width) {
+  @media screen and (max-width: ($breakpoint -1)) {
+    max-width: $width;
+  }
+}
+@mixin max-width-between($start, $end, $width) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    max-width: $width;
+  }
 }
 
 
@@ -56,6 +147,41 @@
 @mixin height-break($breakpoint, $height) {
   @media screen and (min-width: $breakpoint) {
     height: $height;
+  }
+}
+//alias
+@mixin height-from($breakpoint, $height, $max: false) {
+  @media screen and (min-width: $breakpoint) {
+    height: $height;
+    @if $max {max-height: $height;}
+  }
+}
+@mixin height-until($breakpoint, $height, $max: false) {
+  @media screen and (min-width: $breakpoint) {
+    height: $height;
+    @if $max {max-height: $height;}
+  }
+}
+
+@mixin max-height-break($breakpoint, $height) {
+  @media screen and (min-width: $breakpoint) {
+    max-height: $height;
+  }
+}
+//alias
+@mixin max-height-from($breakpoint, $height) {
+  @media screen and (min-width: $breakpoint) {
+    max-height: $height;
+  }
+}
+@mixin max-height-until($breakpoint, $height) {
+  @media screen and (max-width: ($breakpoint -1)) {
+    max-height: $height;
+  }
+}
+@mixin max-height-between($start, $end, $height) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
+    max-height: $height;
   }
 }
 
@@ -75,10 +201,26 @@
   @if $on-desktop{@include height-break($desktop, $on-desktop)}
 }
 
+@mixin max-height-scale(
+  $default: false,
+  $on-lrg-mobile: false,
+  $on-phablet: false,
+  $on-tablet: false,
+  $on-laptop: false,
+  $on-desktop: false
+  ) {
+    @if $default {max-height: $default}
+    @if $on-lrg-mobile  {@include max-height-break($lrg-mobile, $on-lrg-mobile)}
+    @if $on-phablet {@include max-height-break($phablet, $on-phablet)}
+    @if $on-tablet {@include max-height-break($tablet, $on-tablet)}
+    @if $on-laptop {@include max-height-break($laptop, $on-laptop)}
+    @if $on-desktop{@include max-height-break($desktop, $on-desktop)}
+}
+
 
 ////XY Sizing
 
-@mixin size ($x, $y: false, $min: false $max: false) {
+@mixin size ($x, $y: false, $min: false, $max: false) {
   @if $y {
     width: $x; height: $y;
     @if $min {
@@ -87,7 +229,7 @@
     @if $max {
       max-width: $x; max-height: $y;
     }
-    
+
   }
   @else {
     width: $x; height: $x;
@@ -102,34 +244,34 @@
 
 @mixin size-until(
   $breakpoint,
-  $set-x,
-  $set-y: false,
-  $set-min: false,
-  $set-max: false
+  $x,
+  $y: false,
+  $min: false,
+  $max: false
   ) {
   @media screen and (max-width: $breakpoint - 1px) {
     @include size(
-      $set-x,
-      $set-y,
-      $set-min,
-      $set-max
+      $x,
+      $y,
+      $min,
+      $max
     ) ;
   }
 }
 
 @mixin size-from(
   $breakpoint,
-  $set-x,
-  $set-y: false,
-  $set-min: false,
-  $set-max: false
+  $x,
+  $y: false,
+  $min: false,
+  $max: false
   ) {
   @media screen and (min-width: $breakpoint - 1px) {
     @include size(
-      $set-x,
-      $set-y,
-      $set-min,
-      $set-max
+      $x,
+      $y,
+      $min,
+      $max
     ) ;
   }
 }
@@ -137,17 +279,17 @@
 @mixin size-between(
   $start,
   $end,
-  $set-x,
-  $set-y: false,
-  $set-min: false,
-  $set-max: false
+  $x,
+  $y: false,
+  $min: false,
+  $max: false
   ) {
-  @media screen and (min-width: $start, max-width: $end - 1px) {
+  @media screen and (min-width: $start) and (max-width: $end - 1px) {
     @include size(
-      $set-x,
-      $set-y,
-      $set-min,
-      $set-max
+      $x,
+      $y,
+      $min,
+      $max
     ) ;
   }
 }
