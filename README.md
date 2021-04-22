@@ -444,12 +444,15 @@ Steamloach provides three flex-element mixins: `row`, `container`, and `wrapper`
 * `row` defaults to `width: 100%;`
 
 **`@include row(...)`**
+
 **`@include row-<from/until/between>(...)`**
 
 **`@include container(...)`**
+
 **`@include container-<from/until/between>(...)`**
 
 **`@include wrapper(...)`**
+
 **`@include wrapper-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -496,6 +499,7 @@ Steamloach provides three flex-element mixins: `row`, `container`, and `wrapper`
 ##### From, Until, Between
 
 **`@include column(...)`**
+
 **`@include column-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -556,6 +560,7 @@ Use `column-scale` to set column-based width across any or all [defined breakpoi
 ##### From, Until, Between
 
 **`@include width-<from/until/between>(...)`**
+
 **`@include height-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -581,6 +586,7 @@ img {
 `width` and `height` scales can be used to set sizing across any or all breakpoints in a single statement.
 
 **`@include width-scale(...)`**
+
 **`@include height-scale(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -618,6 +624,7 @@ aside {
 ##### From, Until, Between
 
 **`@include max-width-<from/until/between>(...)`**
+
 **`@include max-height-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -641,6 +648,7 @@ aside {
 `max-width` and `max-height` scales can be used to constrain sizing across any or all breakpoints in a single statement.
 
 **`@include max-width-scale(...)`**
+
 **`@include max-height-scale(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -674,6 +682,7 @@ aside {
 The `size` mixin provides a concise way to set the width and height of an element. If only `$x` (width) is specified, both width and height are given the same value. `$min` and `$max` can be used to constrain dimensions as needed.
 
 **`@include size(...)`**
+
 **`@include size-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -706,6 +715,7 @@ The `size` mixin provides a concise way to set the width and height of an elemen
 ##### From, Until, Between
 
 **`@include pad-<from/until/between>(...)`**
+
 **`@include margin-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -773,17 +783,29 @@ The `size` mixin provides a concise way to set the width and height of an elemen
 Add an `x-` `y-` or `xy` prefix to set horizontal, vertical, or all values in a single statement.
 
 **`@include x-pad(...)`**
+
 **`@include x-pad-<from/until/between>(...)`**
+
 **`@include y-pad(...)`**
+
 **`@include y-pad-<from/until/between>(...)`**
+
 **`@include xy-pad(...)`**
+
 **`@include xy-pad-<from/until/between>(...)`**
 
+
+
 **`@include x-margin(...)`**
+
 **`@include x-margin-<from/until/between>(...)`**
+
 **`@include y-margin(...)`**
+
 **`@include y-margin-<from/until/between>(...)`**
+
 **`@include xy-margin(...)`**
+
 **`@include xy-margin-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
@@ -807,9 +829,11 @@ Add an `x-` `y-` or `xy` prefix to set horizontal, vertical, or all values in a 
 Use the `single-` prefix to set a single value.
 
 **`@include single-pad(...)`**
+
 **`@include single-pad-<from/until/between>(...)`**
 
 **`@include single-margin(...)`**
+
 **`@include single-margin-<from/until/between>(...)`**
 
 | Arguments          | Required |  Accepts |
