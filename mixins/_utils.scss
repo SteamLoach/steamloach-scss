@@ -186,39 +186,6 @@
 }
 
 
-//Hover
-
-@mixin hover-pointer() {
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-//Quick Color Fill
-
-@mixin quick-fill(
-  $background: $page-background,
-  $text: $text-color,
-  $title: $title-color,
-  $border: true,
-) {
-
-  color: $text;
-
-  h1, h2, h3,
-  h4, h5, h6 {
-    color: $title;
-  }
-
-  @if $border {
-    border: $border-width solid $text;
-  }
-
-  background: $background;
-
-}
-
-
 
 
 
