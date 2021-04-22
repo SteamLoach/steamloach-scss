@@ -493,7 +493,7 @@ Steamloach provides three flex-element mixins: `row`, `container`, and `wrapper`
 
 `column` mixins provide a concise way of defining column-based width across breakpoints. 'Columns' are calculated as a percentage of the total available width of the parent element. The number of available columns is defined by the `$grid-columns` variable which defaults to `24` and can be overriden in your config file.
 
-#####From, Until, Between
+##### From, Until, Between
 
 **`@include column(...)`**
 **`@include column-<from/until/between>(...)`**
@@ -515,7 +515,7 @@ Steamloach provides three flex-element mixins: `row`, `container`, and `wrapper`
 }
 ```
 
-#####Scale
+##### Scale
 
 Use `column-scale` to set column-based width across any or all [defined breakpoints](#breakpoints) in a single statement.
 
@@ -553,7 +553,7 @@ Use `column-scale` to set column-based width across any or all [defined breakpoi
 
 `width` and `height` mixins can be used to set dimensions across breakpoints. The optional `$max` argument can be used to constrain dimensions as needed.
 
-#####From, Until, Between
+##### From, Until, Between
 
 **`@include width-<from/until/between>(...)`**
 **`@include height-<from/until/between>(...)`**
@@ -576,7 +576,7 @@ img {
 }
 ```
 
-#####Scale
+##### Scale
 
 `width` and `height` scales can be used to set sizing across any or all breakpoints in a single statement.
 
@@ -615,7 +615,7 @@ aside {
 
 `max-width` and `max-height` mixins can be used to constrain dimensions across breakpoints.
 
-#####From, Until, Between
+##### From, Until, Between
 
 **`@include max-width-<from/until/between>(...)`**
 **`@include max-height-<from/until/between>(...)`**
@@ -636,7 +636,7 @@ aside {
 }
 ```
 
-#####Scale
+##### Scale
 
 `max-width` and `max-height` scales can be used to constrain sizing across any or all breakpoints in a single statement.
 
@@ -703,7 +703,7 @@ The `size` mixin provides a concise way to set the width and height of an elemen
 
 `pad` and `margin` mixins provide concise shorthand for setting padding and margin across breakpoints.
 
-#####From, Until, Between
+##### From, Until, Between
 
 **`@include pad-<from/until/between>(...)`**
 **`@include margin-<from/until/between>(...)`**
@@ -735,7 +735,7 @@ The `size` mixin provides a concise way to set the width and height of an elemen
 ```
 
 
-#####Scale
+##### Scale
 
 `pad-scale` and `margin-scale` can be used to set padding and margin across any or all breakpoints.
 
@@ -768,7 +768,7 @@ The `size` mixin provides a concise way to set the width and height of an elemen
 }
 ```
 
-#####XY
+##### XY
 
 Add an `x-` `y-` or `xy` prefix to set horizontal, vertical, or all values in a single statement.
 
@@ -802,7 +802,7 @@ Add an `x-` `y-` or `xy` prefix to set horizontal, vertical, or all values in a 
 ```
 
 
-#####Single direction
+##### Single direction
 
 Use the `single-` prefix to set a single value.
 
@@ -833,7 +833,7 @@ Use the `single-` prefix to set a single value.
 
 `font-size` mixins provide an easy way to set font size across breakpoints.
 
-#####From, Until, Between
+##### From, Until, Between
 
 **`@include font-size-<from/until/between>(...)`**
 
@@ -854,7 +854,7 @@ Use the `single-` prefix to set a single value.
 }
 ```
 
-#####Scale
+##### Scale
 
 Use `font-size-scale` to set font size across any or all breakpoints in a single statement.
 

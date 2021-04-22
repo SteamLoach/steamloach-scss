@@ -1,6 +1,6 @@
 {
   "name": "steamloach-scss",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description":"Flexbox based SCSS library for scaffolding small projects.",
   "main": "index.js",
   "scripts": {
